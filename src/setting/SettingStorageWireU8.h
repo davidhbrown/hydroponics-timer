@@ -1,9 +1,10 @@
+#pragma once
 #include "SettingStorage.h"
 #include "value/Value.h"
 #include <Arduino.h>
 #include <Wire.h>
 
-class SettingStorageWireU8 : protected SettingStorage {
+class SettingStorageWireU8 : public SettingStorage {
     private:
     Value<uint8_t> *val;
     uint8_t dev_addr, reg_addr;
@@ -13,5 +14,6 @@ class SettingStorageWireU8 : protected SettingStorage {
         uint8_t device_address,
         uint8_t register_address
     );
-
+    void save();
+    void load();
 };
