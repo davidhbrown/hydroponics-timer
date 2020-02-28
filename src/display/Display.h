@@ -1,6 +1,6 @@
 #pragma once
 
-class SettingDisplay{
+class Display{
     public:
     virtual void display();
     virtual void active();

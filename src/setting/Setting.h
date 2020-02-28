@@ -1,12 +1,13 @@
 #pragma once
 #include "value/Value.h"
-#include "SettingDisplay.h"
+#include "display/Display.h"
 #include "SettingStorage.h"
 
+template <class T>
 class Setting {
     protected:
-    Value *value;
-    SettingDisplay *display;
+    Value<T> *value;
+    Display *display;
     public:
-    Setting(Value *v, SettingDisplay *d, SettingStorage *s);
+    Setting(Value<T> *v, Display *d, SettingStorage *s);
 };
