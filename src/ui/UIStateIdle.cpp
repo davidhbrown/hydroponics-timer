@@ -1,6 +1,9 @@
 #include "UIStateIdle.h"
-#include "../screen/Screen.h"
 #include "config.h"
+#include "DLL.h"
+#include "screen/ScreenLCD.h"
+
+extern DLL<ScreenLCD> *screens;
 
 UIStateIdle::UIStateIdle()
 {
@@ -24,12 +27,12 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
 
     case UIEventId::BUTTON_RELEASE_RIGHT:
     case UIEventId::BUTTON_HELD_RIGHT:
-        Screen::setCurrent(Screen::getCurrent()->getNext());
+        screens = screens->next();
         idleStart = millis();
         break;
     case UIEventId::BUTTON_RELEASE_LEFT:
     case UIEventId::BUTTON_HELD_LEFT:
-        Screen::setCurrent(Screen::getCurrent()->getPrevious());
+        screens = screens->previous();
         idleStart = millis();
         break;
     default:

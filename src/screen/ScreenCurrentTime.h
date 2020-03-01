@@ -1,7 +1,7 @@
 #pragma once
-#include "Screen.h"
+#include "ScreenLCD.h"
 
-class ScreenCurrentTime : public Screen {
+class ScreenCurrentTime : public ScreenLCD {
     public:
     void initLCD(LiquidCrystal *lcd);
     void updateLCD(LiquidCrystal *lcd);

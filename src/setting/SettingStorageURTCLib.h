@@ -1,6 +1,6 @@
 #pragma once
 #include "SettingStorage.h"
-#include "value/Value.h"
+#include "Setting.h"
 #include <Arduino.h>
 #include "uRTClib.h"
 
@@ -15,13 +15,13 @@ enum SettingStorageURTCLibFields {
 
 class SettingStorageURTCLib : public SettingStorage {
     private:
-    Value<uint8_t> *_val;
+    Setting *_setting;
     uRTCLib *_rtc;
     SettingStorageURTCLibFields _field;
 
     public:
     SettingStorageURTCLib(
-        Value<uint8_t> *value,
+        Setting *setting,
         const SettingStorageURTCLibFields whichField,
         uRTCLib *rtc
     );

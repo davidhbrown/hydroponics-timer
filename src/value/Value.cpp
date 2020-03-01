@@ -11,6 +11,8 @@ template <class T> T Value<T>::get() {
     return value;
 }
 template <class T> void Value<T>::set(T v) {
+    if (v > max) v = max;
+    if (v < min) v = min;
     value = v;
 }
 template <class T> void Value<T>::increment() {
@@ -34,5 +36,5 @@ template <class T> void Value<T>::decrementBy(uint8_t amount) {
     }
 }
 
-template class Value<uint8_t>;
+//template class Value<uint8_t>;
 template class Value<uint16_t>;

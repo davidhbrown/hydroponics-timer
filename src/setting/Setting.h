@@ -3,11 +3,25 @@
 #include "display/Display.h"
 #include "SettingStorage.h"
 
-template <class T>
-class Setting {
-    protected:
-    Value<T> *value;
+/* didn't work as a tempalte; need polymorphism
+// or maybe to decide that a uint16_t can handle all cases?
+*/
+struct Setting{
+    Value<uint16_t> *value;
     Display *display;
-    public:
-    Setting(Value<T> *v, Display *d, SettingStorage *s);
+    SettingStorage *storage;
 };
+//*/
+/*
+class Setting {
+    private:
+    Value<uint16_t> *_value;
+    Display *_display;
+    SettingStorage *_storage;
+    public:
+    Setting(Value<uint16_t> *v, Display *d, SettingStorage *s);
+    Value<uint16_t> *getValue();
+    Display *getDisplay();
+    SettingStorage *getStorage();
+};
+*/

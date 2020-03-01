@@ -1,28 +1,29 @@
 #include "SettingStorageURTCLib.h"
 
 SettingStorageURTCLib::SettingStorageURTCLib(
-    Value<uint8_t> *value,
+    Setting *setting,
     const SettingStorageURTCLibFields whichField,
     uRTCLib *rtc)
 {
     _field = whichField;
     _rtc = rtc;
-    _val = value;
+    _setting = setting;
 };
 void SettingStorageURTCLib::save()
 {
+    uint8_t value = (uint8_t) _setting->value->get();
     switch (_field)
     {
     case SECONDS:
-        _rtc->set(_val->get(), _rtc->minute(), _rtc->hour(),
+        _rtc->set(value, _rtc->minute(), _rtc->hour(),
                   _rtc->dayOfWeek(), _rtc->day(), _rtc->month(), _rtc->year());
         break;
     case MINUTES:
-        _rtc->set(_rtc->second(), _val->get(), _rtc->hour(),
+        _rtc->set(_rtc->second(), value, _rtc->hour(),
                   _rtc->dayOfWeek(), _rtc->day(), _rtc->month(), _rtc->year());
         break;
     case HOURS:
-        _rtc->set(_rtc->second(), _rtc->minute(), _val->get(),
+        _rtc->set(_rtc->second(), _rtc->minute(), value,
                   _rtc->dayOfWeek(), _rtc->day(), _rtc->month(), _rtc->year());
         break;    
     }
@@ -33,13 +34,13 @@ void SettingStorageURTCLib::load()
     switch (_field)
     {
     case SECONDS:
-        _val->set(_rtc->second());
+        _setting->value->set(_rtc->second());
         break;
     case MINUTES:
-        _val->set(_rtc->minute());
+        _setting->value->set(_rtc->minute());
         break;
     case HOURS:
-        _val->set(_rtc->hour());
+        _setting->value->set(_rtc->hour());
         break;
     }
 };
