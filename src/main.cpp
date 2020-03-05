@@ -9,6 +9,9 @@ David H. Brown
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(PIN_RS, PIN_EN, PIN_D4, PIN_D5, PIN_D6, PIN_D7);
 
+#include "uRTCLib.h"
+uRTCLib rtc = uRTCLib();
+
 #include "ui/UIStateId.h"
 UIStateId currentStateId;
 
@@ -29,9 +32,9 @@ int eventsIndex = 0;
 #include "screen/ScreenTimer.h"
 #include "screen/ScreenLight.h"
 DLL<ScreenLCD> *screens, *previousScreens;
-ScreenLCD *sl_currentTime = new ScreenCurrentTime(),
-          *sl_timer = new ScreenTimer(),
-          *sl_light = new ScreenLight();
+ScreenCurrentTime *screen_currentTime = new ScreenCurrentTime(&lcd, &rtc);
+ScreenTimer *screen_timer = new ScreenTimer(&lcd);
+ScreenLight *screen_light = new ScreenLight(&lcd);
 
 void setup()
 {
@@ -52,9 +55,9 @@ void setup()
   UIStateRepository::registerState(UIStateId::SLEEP, &uis_sleep);
   currentStateId = UIStateId::IDLE;
 
-  screens = new DLL<ScreenLCD>(sl_currentTime);
-  screens->append(sl_timer);
-  screens->append(sl_light);
+  screens = new DLL<ScreenLCD>(screen_currentTime);
+  screens->append(screen_timer);
+  screens->append(screen_light);
   previousScreens = nullptr;
 }
 
@@ -69,7 +72,7 @@ void loop()
   if (previousScreens != screens)
   {
     previousScreens = screens;
-    screens->item()->initLCD(&lcd);
+    screens->item()->initLCD();
   }
-  screens->item()->updateLCD(&lcd);
+  screens->item()->updateLCD();
 }

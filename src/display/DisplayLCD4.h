@@ -10,8 +10,7 @@
 class DisplayLCD4 : public Display {
     private:
     LiquidCrystal *_lcd;
-    Value<uint16_t> *_val;
     uint8_t _row, _col;
     public:
-    DisplayLCD4(LiquidCrystal *lcd, Value<uint16_t> *value, uint8_t row, uint8_t col);
+    DisplayLCD4(LiquidCrystal *lcd, uint8_t row, uint8_t col);
 };

@@ -5,12 +5,13 @@
 
 class ScreenLCD
 {
-private:
+protected:
+    LiquidCrystal *_lcd;
     DLL<Setting> *_settings;
 
 public:
-    virtual void initLCD(LiquidCrystal *lcd);
-    virtual void updateLCD(LiquidCrystal *lcd);
+    ScreenLCD(LiquidCrystal *lcd) : _lcd{ lcd }, _settings{ nullptr }{};
     DLL<Setting> *getSettings();
-    void setSettings(DLL<Setting> *settings);
+    virtual void initLCD();
+    virtual void updateLCD();
 };

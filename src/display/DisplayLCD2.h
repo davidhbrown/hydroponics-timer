@@ -3,19 +3,19 @@
 #include "value/Value.h"
 #include <LiquidCrystal.h>
 /** 
- * Accepts a Value<uint8_t> but allocates only 2 characters for its display...
+ * Allocates only 2 characters for its display...
  * adequate for 00-99, time segments, ...?
  */
 class DisplayLCD2 : public Display
 {
 private:
     LiquidCrystal *_lcd;
-    Value<uint8_t> *_val;
+    Value *_val;
     uint8_t _row, _col;
 
 public:
-    DisplayLCD2(LiquidCrystal *lcd, Value<uint8_t> *value, uint8_t row, uint8_t col);
-    void display();
+    DisplayLCD2(LiquidCrystal *lcd, uint8_t row, uint8_t col);
+    void display(Value *value);
     void active();
     void inactive();
 };

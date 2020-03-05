@@ -1,40 +1,37 @@
 #include "Value.h"
 
-template <class T> Value<T>::Value(T mn, T mx, bool wrap) {
-    min = mn;
-    max = mx;
-    wrap_inc_dec = wrap;
-    value = min;
+Value::Value(uint16_t min, uint16_t max, bool wrap) {
+    _min = min;
+    _max = max;
+    _wrap = wrap;
+    _value = min;
 };
 
-template <class T> T Value<T>::get() {
-    return value;
+uint16_t Value::get() {
+    return _value;
 }
-template <class T> void Value<T>::set(T v) {
-    if (v > max) v = max;
-    if (v < min) v = min;
-    value = v;
+void Value::set(uint16_t value) {
+    if (value > _max) value = _max;
+    if (value < _min) value = _min;
+    _value = value;
 }
-template <class T> void Value<T>::increment() {
+void Value::increment() {
     incrementBy(1);
 }
-template <class T> void Value<T>::decrement() {
+void Value::decrement() {
     decrementBy(1);
 }
-template <class T> void Value<T>::incrementBy(uint8_t amount) {
-    if (max - value > amount) {
-        value = wrap_inc_dec ? min : max;
+void Value::incrementBy(uint8_t amount) {
+    if (_max - _value > amount) {
+        _value = _wrap ? _min : _max;
     } else {
-        value += amount;
+        _value += amount;
     }
 }
-template <class T> void Value<T>::decrementBy(uint8_t amount) {
-    if (value - min > amount) {
-        value = wrap_inc_dec ? max : min;
+void Value::decrementBy(uint8_t amount) {
+    if (_value - _min > amount) {
+        _value = _wrap ? _max : _min;
     } else {
-        value -= amount;
+        _value -= amount;
     }
 }
-
-//template class Value<uint8_t>;
-template class Value<uint16_t>;

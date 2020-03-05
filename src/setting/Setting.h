@@ -1,27 +1,23 @@
 #pragma once
+/*
 #include "value/Value.h"
 #include "display/Display.h"
-#include "SettingStorage.h"
-
-/* didn't work as a tempalte; need polymorphism
-// or maybe to decide that a uint16_t can handle all cases?
+#include "storage/Storage.h"
 */
-struct Setting{
-    Value<uint16_t> *value;
-    Display *display;
-    SettingStorage *storage;
-};
-//*/
-/*
+// forward declare instead of #include (http://www.cplusplus.com/forum/articles/10627/)
+class Value;
+class Display;
+class Storage;
+
+
 class Setting {
     private:
-    Value<uint16_t> *_value;
+    Value *_value;
     Display *_display;
-    SettingStorage *_storage;
+    Storage *_storage;
     public:
-    Setting(Value<uint16_t> *v, Display *d, SettingStorage *s);
-    Value<uint16_t> *getValue();
+    Setting(Value *v, Display *d, Storage *s);
+    Value *getValue();
     Display *getDisplay();
-    SettingStorage *getStorage();
+    Storage *getStorage();
 };
-*/

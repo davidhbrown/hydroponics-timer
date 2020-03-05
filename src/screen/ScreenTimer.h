@@ -1,8 +1,10 @@
 #pragma once
 #include "ScreenLCD.h"
 
-class ScreenTimer : public ScreenLCD {
-    public:
-    void initLCD(LiquidCrystal *lcd);
-    void updateLCD(LiquidCrystal *lcd);
+class ScreenTimer : public ScreenLCD
+{
+public:
+    ScreenTimer(LiquidCrystal *lcd) : ScreenLCD{lcd} {};
+    void initLCD();
+    void updateLCD();
 };

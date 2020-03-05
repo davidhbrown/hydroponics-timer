@@ -14,10 +14,14 @@ T *DLL<T>::item() { return _item; }
 template <class T>
 DLL<T> *DLL<T>::append(T *nextItem)
 {
-    if(_next == nullptr) {
-        _next = new DLL<T>(nextItem, this);;
+    if (_next == nullptr)
+    {
+        _next = new DLL<T>(nextItem, this);
+        ;
         return _next;
-    } else {
+    }
+    else
+    {
         return _next->append(nextItem);
     }
 }
@@ -25,9 +29,12 @@ DLL<T> *DLL<T>::append(T *nextItem)
 template <class T>
 DLL<T> *DLL<T>::first()
 {
-    if(_previous == nullptr) {
+    if (_previous == nullptr)
+    {
         return this;
-    } else {
+    }
+    else
+    {
         return _previous->first();
     }
 }
@@ -35,9 +42,12 @@ DLL<T> *DLL<T>::first()
 template <class T>
 DLL<T> *DLL<T>::next()
 {
-    if(_next == nullptr) {
+    if (_next == nullptr)
+    {
         return this;
-    } else {
+    }
+    else
+    {
         return _next;
     }
 }
@@ -45,12 +55,17 @@ DLL<T> *DLL<T>::next()
 template <class T>
 DLL<T> *DLL<T>::previous()
 {
-    if(_previous == nullptr) {
+    if (_previous == nullptr)
+    {
         return this;
-    } else {
+    }
+    else
+    {
         return _previous;
     }
 }
 
 #include "screen/ScreenLCD.h"
 template class DLL<ScreenLCD>;
+#include "setting/Setting.h"
+template class DLL<Setting>;

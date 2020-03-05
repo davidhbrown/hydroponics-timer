@@ -1,8 +1,10 @@
 #pragma once
 #include "ScreenLCD.h"
 
-class ScreenLight : public ScreenLCD {
-    public:
-    void initLCD(LiquidCrystal *lcd);
-    void updateLCD(LiquidCrystal *lcd);
+class ScreenLight : public ScreenLCD
+{
+public:
+    ScreenLight(LiquidCrystal *lcd) : ScreenLCD{lcd} {};
+    void initLCD();
+    void updateLCD();
 };

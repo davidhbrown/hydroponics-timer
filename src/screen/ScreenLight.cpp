@@ -1,13 +1,12 @@
 #include "ScreenLight.h"
-#include "config.h"
 
-void ScreenLight::initLCD(LiquidCrystal *lcd) {
-    lcd->setCursor(0,0);
-    lcd->print("Light Lvl: 1023 ");
-    lcd->setCursor(0,1);
-    lcd->print("Off below:    0 ");
+void ScreenLight::initLCD() {
+    _lcd->setCursor(0,0);
+    _lcd->print("Light Lvl: 1023 ");
+    _lcd->setCursor(0,1);
+    _lcd->print("Off below:    0 ");
 }
 
-void ScreenLight::updateLCD(LiquidCrystal *lcd) {
+void ScreenLight::updateLCD() {
 
 }

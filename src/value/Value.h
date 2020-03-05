@@ -1,16 +1,20 @@
 #pragma once
 #include <Arduino.h>
 
-template <class T> class Value {
+/**
+ * @brief Increment and decrement a value within bounds, optionally wrapping
+ * 
+ * I had thought I would template this, but it got too messy several classes in.
+ * 
+ */
+class Value {
     private:
-        T value;
-        T min, max;
-    protected:
-        bool wrap_inc_dec;
+        uint16_t _value, _min, _max;
+        bool _wrap;
     public:
-        Value(T min, T max, bool wrap);
-        T get();
-        void set(T value);
+        Value(uint16_t min, uint16_t max, bool wrap);
+        uint16_t get();
+        void set(uint16_t value);
         void increment();
         void incrementBy(uint8_t amount);
         void decrement();
