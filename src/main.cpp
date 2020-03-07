@@ -31,7 +31,7 @@ int eventsIndex = 0;
 #include "screen/ScreenCurrentTime.h"
 #include "screen/ScreenTimer.h"
 #include "screen/ScreenLight.h"
-DLL<ScreenLCD> *screens, *previousScreens;
+DLL<Screen> *screens, *previousScreens;
 ScreenCurrentTime *screen_currentTime = new ScreenCurrentTime(&lcd, &rtc);
 ScreenTimer *screen_timer = new ScreenTimer(&lcd);
 ScreenLight *screen_light = new ScreenLight(&lcd);
@@ -55,7 +55,7 @@ void setup()
   UIStateRepository::registerState(UIStateId::SLEEP, &uis_sleep);
   currentStateId = UIStateId::IDLE;
 
-  screens = new DLL<ScreenLCD>(screen_currentTime);
+  screens = new DLL<Screen>(screen_currentTime);
   screens->append(screen_timer);
   screens->append(screen_light);
   previousScreens = nullptr;
@@ -72,7 +72,7 @@ void loop()
   if (previousScreens != screens)
   {
     previousScreens = screens;
-    screens->item()->initLCD();
+    screens->item()->init();
   }
-  screens->item()->updateLCD();
+  screens->item()->update();
 }

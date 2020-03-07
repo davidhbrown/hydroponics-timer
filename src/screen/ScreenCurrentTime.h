@@ -18,6 +18,6 @@ class ScreenCurrentTime : public ScreenLCD {
     DLL<Setting> *_settings;
     public:
     ScreenCurrentTime(LiquidCrystal *lcd, uRTCLib *rtc);
-    void initLCD();
-    void updateLCD();
+    void init();
+    void update();
 };

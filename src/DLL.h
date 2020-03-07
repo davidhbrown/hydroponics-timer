@@ -40,13 +40,13 @@ public:
      */
     DLL<T> *first();
     /**
-     * @brief returns the next DLL node, or this one if there is no next node
+     * @brief returns the next DLL node, or nullptr if there is no next node
      * 
      * @return DLL<T>* 
      */
     DLL<T> *next();
     /**
-     * @brief reurns the previous DLL node, or this one if there is no previous node
+     * @brief reurns the previous DLL node, or nullptr if there is no previous node
      * 
      * @return DLL<T>* 
      */

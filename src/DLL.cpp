@@ -65,7 +65,7 @@ DLL<T> *DLL<T>::previous()
     }
 }
 
-#include "screen/ScreenLCD.h"
-template class DLL<ScreenLCD>;
+#include "screen/Screen.h"
+template class DLL<Screen>;
 #include "setting/Setting.h"
 template class DLL<Setting>;

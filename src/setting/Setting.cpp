@@ -11,3 +11,6 @@ Setting::Setting(Value *v, Display *d, Storage *s)
 Value *Setting::getValue() { return _value; };
 Display *Setting::getDisplay() { return _display; }
 Storage *Setting::getStorage() { return _storage; }
+void Setting::displayValue() {
+    _display->display(_value);
+}

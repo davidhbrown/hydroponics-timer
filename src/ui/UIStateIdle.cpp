@@ -1,9 +1,9 @@
 #include "UIStateIdle.h"
 #include "config.h"
 #include "DLL.h"
-#include "screen/ScreenLCD.h"
+#include "screen/Screen.h"
 
-extern DLL<ScreenLCD> *screens;
+extern DLL<Screen> *screens;
 
 UIStateIdle::UIStateIdle()
 {
@@ -27,14 +27,27 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
 
     case UIEventId::BUTTON_RELEASE_RIGHT:
     case UIEventId::BUTTON_HELD_RIGHT:
-        screens = screens->next();
+    {
+        DLL<Screen> *next = screens->next();
+        if (nullptr != next)
+        {
+            screens = next;
+        }
         idleStart = millis();
-        break;
+    }
+    break;
     case UIEventId::BUTTON_RELEASE_LEFT:
     case UIEventId::BUTTON_HELD_LEFT:
-        screens = screens->previous();
+    {
+        DLL<Screen> *prev = screens->previous();
+        if (nullptr != prev)
+        {
+            screens = prev;
+        }
         idleStart = millis();
-        break;
+    }
+    break;
+
     default:
         //other events just restart the idle timer
         idleStart = millis();

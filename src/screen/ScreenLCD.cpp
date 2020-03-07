@@ -1,3 +1,4 @@
 #include "ScreenLCD.h"
 
-DLL<Setting> *ScreenLCD::getSettings() { return _settings; }
+ScreenLCD::ScreenLCD(LiquidCrystal *lcd) : Screen{nullptr}, _lcd{lcd} {};
+

@@ -5,6 +5,6 @@ class ScreenTimer : public ScreenLCD
 {
 public:
     ScreenTimer(LiquidCrystal *lcd) : ScreenLCD{lcd} {};
-    void initLCD();
-    void updateLCD();
+    void init();
+    void update();
 };

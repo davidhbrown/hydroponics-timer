@@ -19,7 +19,7 @@ ScreenCurrentTime::ScreenCurrentTime(LiquidCrystal *lcd, uRTCLib *rtc) : ScreenL
     _settings->append(_seconds);
 }
 
-void ScreenCurrentTime::initLCD()
+void ScreenCurrentTime::init()
 {
     _lcd->setCursor(0, 0);
     _lcd->print("  Current Time  ");
@@ -27,7 +27,14 @@ void ScreenCurrentTime::initLCD()
     _lcd->print("01:00:00        ");
 }
 
-void ScreenCurrentTime::updateLCD()
+void ScreenCurrentTime::update()
 {
+    DLL<Setting> *settings = _settings->first();
+    while(nullptr != settings) {
+        settings->item()->getDisplay()->display(
+            settings->item()->getValue()
+        );
+        settings = settings->next();
+    }
 }
 

@@ -1,7 +1,7 @@
 #include "DisplayLCD2.h"
 
 DisplayLCD2::DisplayLCD2(
-    LiquidCrystal *lcd, uint8_t row, uint8_t col)
+    LiquidCrystal *lcd, uint8_t row, uint8_t col) : Display()
 {
     _lcd = lcd;
     _row = row;
