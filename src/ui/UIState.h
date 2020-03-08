@@ -6,10 +6,12 @@
 class UIState
 {
 protected:
-  bool didEnter;
-  unsigned long stateStarted;
+  const UIStateId _SELF_STATE_ID;
+  bool _didEnter;
+  unsigned long _stateStartedMS;
 
 public:
-UIState():didEnter{false}, stateStarted{0L} {}
+  UIState(UIStateId stateID) : _SELF_STATE_ID{stateID}, _didEnter{false}, _stateStartedMS{0L} {}
+  UIStateId getUIStateId();
   virtual UIStateId handleEvent(UIEventId theEventId);
 };

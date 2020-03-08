@@ -5,7 +5,7 @@ UIState *UIStateRepository::getState(UIStateId theStateId){
     int index = (int) theStateId;
     return UIStateRepository::registeredStates[index];
 };
-void UIStateRepository::registerState(UIStateId theStateEnum, UIState *theState){
-    int index = (int) theStateEnum;
+void UIStateRepository::registerState(UIState *theState){
+    int index = (int) theState->getUIStateId();
     UIStateRepository::registeredStates[index] = theState;
 }

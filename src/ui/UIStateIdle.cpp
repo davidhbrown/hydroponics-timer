@@ -1,23 +1,19 @@
 #include "UIStateIdle.h"
 #include "config.h"
-#include "DLL.h"
+#include "List.h"
 #include "screen/Screen.h"
 
-extern DLL<Screen> *screens;
+extern List<Screen> screens_list;
 
-UIStateIdle::UIStateIdle()
-{
-    didEnter = false;
-}
 UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
 {
     UIStateId nextState = UIStateId::IDLE; //that's me!
-    if (!didEnter)
+    if (!_didEnter)
     {
         // enter:
-        stateStarted = millis();
+        _stateStartedMS = millis();
         digitalWrite(PIN_BACKLIGHT, HIGH);
-        didEnter = true;
+        _didEnter = true;
     }
     switch (theEventId)
     {
@@ -28,23 +24,15 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
     case UIEventId::BUTTON_RELEASE_RIGHT:
     case UIEventId::BUTTON_HELD_RIGHT:
     {
-        DLL<Screen> *next = screens->next();
-        if (nullptr != next)
-        {
-            screens = next;
-        }
-        stateStarted = millis();
+        screens_list.iter_next();
+        _stateStartedMS = millis();
     }
     break;
     case UIEventId::BUTTON_RELEASE_LEFT:
     case UIEventId::BUTTON_HELD_LEFT:
     {
-        DLL<Screen> *prev = screens->previous();
-        if (nullptr != prev)
-        {
-            screens = prev;
-        }
-        stateStarted = millis();
+        screens_list.iter_previous();
+        _stateStartedMS = millis();
     }
     break;
     case UIEventId::BUTTON_HELD_SELECT:
@@ -54,11 +42,11 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
 
     default:
         //other events just restart the idle timer
-        stateStarted = millis();
+        _stateStartedMS = millis();
         break;
     } // switch
 
-    if (millis() - stateStarted > IDLE_TIMEOUT)
+    if (millis() - _stateStartedMS > IDLE_TIMEOUT_MS)
     {
         nextState = UIStateId::SLEEP;
     }
@@ -66,7 +54,7 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
     if (nextState != UIStateId::IDLE)
     {
         // exit:
-        didEnter = false;
+        _didEnter = false;
     }
     return nextState;
 }

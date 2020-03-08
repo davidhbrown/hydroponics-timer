@@ -1,12 +1,10 @@
 #pragma once
 
 #include "UIState.h"
-#include "UIEventId.h"
 
 class UIStateSetting : public UIState
 {
-    public:
-    UIStateSetting();
+public:
+    UIStateSetting(UIStateId id) : UIState{id} {};
     UIStateId handleEvent(UIEventId theEventId);
 };
-

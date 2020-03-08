@@ -18,7 +18,8 @@ Configuration settings for this application
 #define PIN_D7 7
 #define PIN_BACKLIGHT 10
 #define PIN_BUTTONS 0
-#define IDLE_TIMEOUT 30000L
+#define IDLE_TIMEOUT_MS 30000L
+#define SETTING_TIMEOUT_MS 8000L
 
 /*
  for Buttons

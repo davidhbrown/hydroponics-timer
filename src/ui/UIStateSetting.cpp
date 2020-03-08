@@ -1,24 +1,17 @@
 #include "UIStateSetting.h"
 #include "config.h"
-#include "DLL.h"
+#include "List.h"
 #include "screen/Screen.h"
 
-extern DLL<Screen> *screens;
-
-
-UIStateSetting::UIStateSetting()
-{
-    didEnter = false;
-}
 UIStateId UIStateSetting::handleEvent(UIEventId theEventId)
 {
-    UIStateId nextState = UIStateId::IDLE; //that's me!
-    if (!didEnter)
+    UIStateId nextState = _SELF_STATE_ID; 
+    if (!_didEnter)
     {
         // enter:
-        stateStarted = millis();
-        digitalWrite(PIN_BACKLIGHT, HIGH);
-        didEnter = true;
+        _stateStartedMS = millis();
+        /** @todo activate current setting */
+        _didEnter = true;
     }
     switch (theEventId)
     {
@@ -29,45 +22,38 @@ UIStateId UIStateSetting::handleEvent(UIEventId theEventId)
     case UIEventId::BUTTON_RELEASE_RIGHT:
     case UIEventId::BUTTON_HELD_RIGHT:
     {
-        DLL<Screen> *next = screens->next();
-        if (nullptr != next)
-        {
-            screens = next;
-        }
-        stateStarted = millis();
+        /** @todo save setting */
+        /** @todo deactivate current setting */
+//        screens->item()->gotoNextSetting();
+        _stateStartedMS = millis();
     }
     break;
     case UIEventId::BUTTON_RELEASE_LEFT:
     case UIEventId::BUTTON_HELD_LEFT:
     {
-        DLL<Screen> *prev = screens->previous();
-        if (nullptr != prev)
-        {
-            screens = prev;
-        }
-        stateStarted = millis();
+        /** @todo save setting */
+        /** @todo deactivate current setting */
+//        screens->item()->gotoPreviousSetting();
+        _stateStartedMS = millis();
     }
     break;
-    case UIEventId::BUTTON_HELD_SELECT:
-    {
-        nextState = UIStateId::SETTING;
-    }
 
     default:
         //other events just restart the idle timer
-        stateStarted = millis();
+//        _stateStartedMS = millis();
         break;
     } // switch
 
-    if (millis() - stateStarted > IDLE_TIMEOUT)
+    if (millis() - _stateStartedMS > SETTING_TIMEOUT_MS)
     {
-        nextState = UIStateId::SLEEP;
+        /** @todo save setting */
+        nextState = UIStateId::IDLE;
     }
 
-    if (nextState != UIStateId::IDLE)
+    if (nextState != _SELF_STATE_ID)
     {
         // exit:
-        didEnter = false;
+        _didEnter = false;
     }
     return nextState;
 }

@@ -7,7 +7,7 @@ class UIStateRepository {
 private:
     static UIState *registeredStates[];
 public:
-    static void registerState(UIStateId theStateId, UIState *theState);
+    static void registerState(UIState *theState);
     static UIState* getState(UIStateId theStateId);
 };
 

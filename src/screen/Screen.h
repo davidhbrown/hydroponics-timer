@@ -1,5 +1,5 @@
 #pragma once
-#include "DLL.h"
+#include "List.h"
 #include "setting/Setting.h"
 
 /**
@@ -13,10 +13,10 @@
 class Screen
 {
 protected:
-    DLL<Setting> *_settings;
+    List<Setting> *_settings;
 
 public:
-    Screen(DLL<Setting> *settings);
+    Screen(List<Setting> *settings);
     Setting * getCurrentSetting();
     void gotoFirstSetting();
     /**

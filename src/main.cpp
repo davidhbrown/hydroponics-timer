@@ -17,9 +17,11 @@ UIStateId currentStateId;
 
 #include "ui/UIStateRepository.h"
 #include "ui/UIStateIdle.h"
-UIStateIdle uis_idle = UIStateIdle();
+UIStateIdle uis_idle = UIStateIdle(UIStateId::IDLE);
 #include "ui/UIStateSleep.h"
-UIStateSleep uis_sleep = UIStateSleep();
+UIStateSleep uis_sleep = UIStateSleep(UIStateId::SLEEP);
+#include "ui/UIStateSetting.h"
+UIStateSetting uis_setting = UIStateSetting(UIStateId::SETTING);
 #include "Buttons.h"
 Buttons lcdButtons(PIN_BUTTONS);
 
@@ -27,17 +29,19 @@ Buttons lcdButtons(PIN_BUTTONS);
 UIEventId events[EVENTS];
 int eventsIndex = 0;
 
-#include "DLL.h"
+#include "List.h"
 #include "screen/ScreenCurrentTime.h"
 #include "screen/ScreenTimer.h"
 #include "screen/ScreenLight.h"
-DLL<Screen> *screens, *previousScreens;
-ScreenCurrentTime *screen_currentTime = new ScreenCurrentTime(&lcd, &rtc);
-ScreenTimer *screen_timer = new ScreenTimer(&lcd);
-ScreenLight *screen_light = new ScreenLight(&lcd);
+ScreenCurrentTime screen_currentTime = ScreenCurrentTime(&lcd, &rtc);
+ScreenTimer screen_timer = ScreenTimer(&lcd);
+ScreenLight screen_light = ScreenLight(&lcd);
+List<Screen> screens_list = List<Screen>();
+Screen *previousScreen;
 
 void setup()
 {
+  Serial.begin(9600);
   for (int i = 0; i < EVENTS; i++)
   {
     events[i] = UIEventId::NONE;
@@ -47,18 +51,29 @@ void setup()
   digitalWrite(PIN_BACKLIGHT, HIGH); // turn backlight on
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print(" Digital Timer  ");
+  lcd.print(F(" Digital Timer  "));
   lcd.setCursor(0, 1);
-  lcd.print("Hydroponics Pump");
-  delay(2000);
-  UIStateRepository::registerState(UIStateId::IDLE, &uis_idle);
-  UIStateRepository::registerState(UIStateId::SLEEP, &uis_sleep);
+  lcd.print(F("Hydroponics Pump"));
+  for (int t = 2000; t > 0; t -= 500)
+  {
+    Serial.print(F("Starting in "));
+    Serial.println(t);
+    delay(500);
+  }
+  UIStateRepository::registerState(&uis_setting);
+  UIStateRepository::registerState(&uis_idle);
+  UIStateRepository::registerState(&uis_sleep);
   currentStateId = UIStateId::IDLE;
+  Serial.println("UI setup complete");
+  delay(100);
 
-  screens = new DLL<Screen>(screen_currentTime);
-  screens->append(screen_timer);
-  screens->append(screen_light);
-  previousScreens = nullptr;
+  Serial.println("Registering Screens");
+
+  screens_list.insert(&screen_light);
+  screens_list.insert(&screen_timer);
+  screens_list.insert(&screen_currentTime);
+  previousScreen = nullptr;
+  Serial.println(F("Setup complete"));
 }
 
 void loop()
@@ -69,10 +84,10 @@ void loop()
   UIState *state = UIStateRepository::getState(currentStateId);
   currentStateId = state->handleEvent(currentEventId);
 
-  if (previousScreens != screens)
+  if (previousScreen != screens_list.get_item())
   {
-    previousScreens = screens;
-    screens->item()->init();
+    previousScreen = screens_list.get_item();
+    screens_list.get_item()->init();
   }
-  screens->item()->update();
+  screens_list.get_item()->update();
 }

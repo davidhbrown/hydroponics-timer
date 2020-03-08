@@ -2,13 +2,9 @@
 #include "UIState.h"
 #include "UIEventId.h"
 
-
 class UIStateSleep : public UIState
 {
-private:
-        bool didEnter;
 public:
-  UIStateSleep();
+  UIStateSleep(UIStateId id) : UIState{id} {};
   UIStateId handleEvent(UIEventId theEvent);
 };
-

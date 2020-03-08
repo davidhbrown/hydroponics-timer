@@ -5,12 +5,7 @@
 
 class UIStateIdle : public UIState
 {
-    private:
-        bool didEnter;
-        unsigned long stateStarted;
-    public:
-    UIStateIdle();
+public:
+    UIStateIdle(UIStateId id) : UIState{id} {};
     UIStateId handleEvent(UIEventId theEventId);
 };
-
-

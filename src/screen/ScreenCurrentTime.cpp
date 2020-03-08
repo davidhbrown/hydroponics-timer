@@ -14,9 +14,10 @@ ScreenCurrentTime::ScreenCurrentTime(LiquidCrystal *lcd, uRTCLib *rtc) : ScreenL
     _hours = new Setting(_hours_v, _hours_d, _hours_ss);
     _minutes = new Setting(_minutes_v, _minutes_d, _minutes_ss);
     _seconds = new Setting(_seconds_v, _seconds_d, _seconds_ss);
-    _settings = new DLL<Setting>(_hours);
-    _settings->append(_minutes);
-    _settings->append(_seconds);
+    _settings = new List<Setting>();
+    _settings->insert(_seconds);
+    _settings->insert(_minutes);
+    _settings->insert(_hours);
 }
 
 void ScreenCurrentTime::init()
@@ -29,12 +30,11 @@ void ScreenCurrentTime::init()
 
 void ScreenCurrentTime::update()
 {
-    DLL<Setting> *settings = _settings->first();
-    while(nullptr != settings) {
-        settings->item()->getDisplay()->display(
-            settings->item()->getValue()
-        );
-        settings = settings->next();
+    _settings->rewind();
+    Setting *setting;
+    while(nullptr != (setting=_settings->get_item()) ) {
+        setting->displayValue();
+        _settings->iter_next();
     }
 }
 
