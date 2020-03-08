@@ -11,7 +11,8 @@ private:
     T *_item;
     ListNode<T> *_next;
     ListNode<T> *_previous;
-//    friend class List;
+    template<class U>
+    friend class List;
 public:
     /**
      * @brief Construct a new DLL node and specify the previous DLL node
@@ -19,7 +20,7 @@ public:
      * @param item 
      * @param previous 
      */
-    ListNode(T *item, ListNode<T> *previous=nullptr) : _item{item}, _next{nullptr}, _previous{previous}{};
+    ListNode(T *item, ListNode<T> *next=nullptr, ListNode<T> *previous=nullptr) : _item{item}, _next{next}, _previous{previous}{};
     /**
      * @brief get pointer to the stored item
      * 

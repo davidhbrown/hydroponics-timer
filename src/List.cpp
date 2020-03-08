@@ -13,7 +13,9 @@ T *List<T>::get_item()
 }
 template <class T>
 void List<T>::insert(T *nextItem){
-    _current = new ListNode<T>(nextItem, _current);
+    ListNode<T> *inserted = new ListNode<T>(nextItem, _current);
+    _current->_previous = inserted;
+    _current = inserted;
 };
 template <class T>
 void List<T>::rewind(){
