@@ -1,5 +1,4 @@
-#ifndef STATEIDLE_H
-#define STATEIDLE_H
+#pragma once
 
 #include "UIState.h"
 #include "UIEventId.h"
@@ -8,11 +7,10 @@ class UIStateIdle : public UIState
 {
     private:
         bool didEnter;
-        unsigned long idleStart;
+        unsigned long stateStarted;
     public:
     UIStateIdle();
     UIStateId handleEvent(UIEventId theEventId);
 };
 
 
-#endif  //STATEIDLE_H

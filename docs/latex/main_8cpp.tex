@@ -1,0 +1,167 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Liquid\+Crystal.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}ui/\+U\+I\+State\+Id.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ui/\+U\+I\+State\+Repository.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ui/\+U\+I\+State\+Idle.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ui/\+U\+I\+State\+Sleep.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Buttons.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}screen/\+Screen\+Current\+Time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}screen/\+Screen\+Timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}screen/\+Screen\+Light.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}screen/\+Screen.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_ad388c6072de66e84ca8ec9dd4fbbeec9}{E\+V\+E\+N\+TS}}~5
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Liquid\+Crystal \mbox{\hyperlink{main_8cpp_a276edc7cd16994c3df6ac5a80d8e5cf3}{lcd}} (\mbox{\hyperlink{config_8h_a130b402933587698ca0687321614642d}{P\+I\+N\+\_\+\+RS}}, \mbox{\hyperlink{config_8h_a9560c5e9ce40ab3aea91e30e420567fa}{P\+I\+N\+\_\+\+EN}}, \mbox{\hyperlink{config_8h_a7d43c81e95b17b24c58423ee546648d6}{P\+I\+N\+\_\+\+D4}}, \mbox{\hyperlink{config_8h_a4a9e1c206912eb8b451f92ef3de70103}{P\+I\+N\+\_\+\+D5}}, \mbox{\hyperlink{config_8h_aade120add55df7120080c17812b9aed4}{P\+I\+N\+\_\+\+D6}}, \mbox{\hyperlink{config_8h_a07b5ac045e5a43186827d1255b3a063e}{P\+I\+N\+\_\+\+D7}})
+\item 
+void \mbox{\hyperlink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_u_i_state_id_8h_a69222e4945ccf24b0b4e623b1fb56f98}{U\+I\+State\+Id}} \mbox{\hyperlink{main_8cpp_ae46fe89e70a4d100d2e2bc777cf5880d}{current\+State\+Id}}
+\item 
+\mbox{\hyperlink{class_buttons}{Buttons}} \mbox{\hyperlink{main_8cpp_a3761286837c0eb2e134b036a22a58621}{lcd\+Buttons}} (\mbox{\hyperlink{config_8h_adaacab4164a6e1c35c3effac1422801e}{P\+I\+N\+\_\+\+B\+U\+T\+T\+O\+NS}})
+\item 
+\mbox{\hyperlink{_u_i_event_id_8h_af1842d79aa0d18ecdd693c971a5bc8fc}{U\+I\+Event\+Id}} \mbox{\hyperlink{main_8cpp_a0ab28ee85aac8126106b63bae278e233}{events}} \mbox{[}\mbox{\hyperlink{main_8cpp_ad388c6072de66e84ca8ec9dd4fbbeec9}{E\+V\+E\+N\+TS}}\mbox{]}
+\item 
+int \mbox{\hyperlink{main_8cpp_ab9312d29f2bd773124d07623256ded9a}{events\+Index}} = 0
+\item 
+\mbox{\hyperlink{class_screen_current_time}{Screen\+Current\+Time}} \mbox{\hyperlink{main_8cpp_aa8e966300b6224ea944192fa0765fcad}{screen\+Current\+Time}} = \mbox{\hyperlink{class_screen_current_time}{Screen\+Current\+Time}}()
+\item 
+\mbox{\hyperlink{class_screen_timer}{Screen\+Timer}} \mbox{\hyperlink{main_8cpp_a956b474220291fd3bb27a04aafce48bc}{screen\+Timer}} = \mbox{\hyperlink{class_screen_timer}{Screen\+Timer}}()
+\item 
+\mbox{\hyperlink{class_screen_light}{Screen\+Light}} \mbox{\hyperlink{main_8cpp_acafaaadddb6e638d36780a7e0ef756bf}{screen\+Light}} = \mbox{\hyperlink{class_screen_light}{Screen\+Light}}()
+\item 
+\mbox{\hyperlink{class_screen}{Screen}} $\ast$ \mbox{\hyperlink{main_8cpp_ad36619f2bbc18f15bd89dae6cb48a282}{previous\+Screen}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_ad388c6072de66e84ca8ec9dd4fbbeec9}\label{main_8cpp_ad388c6072de66e84ca8ec9dd4fbbeec9}} 
+\index{main.cpp@{main.cpp}!EVENTS@{EVENTS}}
+\index{EVENTS@{EVENTS}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{EVENTS}{EVENTS}}
+{\footnotesize\ttfamily \#define E\+V\+E\+N\+TS~5}
+
+
+
+Definition at line 21 of file main.\+cpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a276edc7cd16994c3df6ac5a80d8e5cf3}\label{main_8cpp_a276edc7cd16994c3df6ac5a80d8e5cf3}} 
+\index{main.cpp@{main.cpp}!lcd@{lcd}}
+\index{lcd@{lcd}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lcd()}{lcd()}}
+{\footnotesize\ttfamily Liquid\+Crystal lcd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{config_8h_a130b402933587698ca0687321614642d}{P\+I\+N\+\_\+\+RS}}}]{,  }\item[{\mbox{\hyperlink{config_8h_a9560c5e9ce40ab3aea91e30e420567fa}{P\+I\+N\+\_\+\+EN}}}]{,  }\item[{\mbox{\hyperlink{config_8h_a7d43c81e95b17b24c58423ee546648d6}{P\+I\+N\+\_\+\+D4}}}]{,  }\item[{\mbox{\hyperlink{config_8h_a4a9e1c206912eb8b451f92ef3de70103}{P\+I\+N\+\_\+\+D5}}}]{,  }\item[{\mbox{\hyperlink{config_8h_aade120add55df7120080c17812b9aed4}{P\+I\+N\+\_\+\+D6}}}]{,  }\item[{\mbox{\hyperlink{config_8h_a07b5ac045e5a43186827d1255b3a063e}{P\+I\+N\+\_\+\+D7}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f}} 
+\index{main.cpp@{main.cpp}!loop@{loop}}
+\index{loop@{loop}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 55 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{main.cpp@{main.cpp}!setup@{setup}}
+\index{setup@{setup}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file main.\+cpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_ae46fe89e70a4d100d2e2bc777cf5880d}\label{main_8cpp_ae46fe89e70a4d100d2e2bc777cf5880d}} 
+\index{main.cpp@{main.cpp}!currentStateId@{currentStateId}}
+\index{currentStateId@{currentStateId}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{currentStateId}{currentStateId}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_i_state_id_8h_a69222e4945ccf24b0b4e623b1fb56f98}{U\+I\+State\+Id}} current\+State\+Id}
+
+
+
+Definition at line 13 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a0ab28ee85aac8126106b63bae278e233}\label{main_8cpp_a0ab28ee85aac8126106b63bae278e233}} 
+\index{main.cpp@{main.cpp}!events@{events}}
+\index{events@{events}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{events}{events}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_i_event_id_8h_af1842d79aa0d18ecdd693c971a5bc8fc}{U\+I\+Event\+Id}} events\mbox{[}\mbox{\hyperlink{main_8cpp_ad388c6072de66e84ca8ec9dd4fbbeec9}{E\+V\+E\+N\+TS}}\mbox{]}}
+
+
+
+Definition at line 22 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_ab9312d29f2bd773124d07623256ded9a}\label{main_8cpp_ab9312d29f2bd773124d07623256ded9a}} 
+\index{main.cpp@{main.cpp}!eventsIndex@{eventsIndex}}
+\index{eventsIndex@{eventsIndex}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{eventsIndex}{eventsIndex}}
+{\footnotesize\ttfamily int events\+Index = 0}
+
+
+
+Definition at line 23 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a3761286837c0eb2e134b036a22a58621}\label{main_8cpp_a3761286837c0eb2e134b036a22a58621}} 
+\index{main.cpp@{main.cpp}!lcdButtons@{lcdButtons}}
+\index{lcdButtons@{lcdButtons}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lcdButtons}{lcdButtons}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_buttons}{Buttons}} lcd\+Buttons(\mbox{\hyperlink{config_8h_adaacab4164a6e1c35c3effac1422801e}{P\+I\+N\+\_\+\+B\+U\+T\+T\+O\+NS}})}
+
+\mbox{\Hypertarget{main_8cpp_ad36619f2bbc18f15bd89dae6cb48a282}\label{main_8cpp_ad36619f2bbc18f15bd89dae6cb48a282}} 
+\index{main.cpp@{main.cpp}!previousScreen@{previousScreen}}
+\index{previousScreen@{previousScreen}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{previousScreen}{previousScreen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen}{Screen}}$\ast$ previous\+Screen = nullptr}
+
+
+
+Definition at line 32 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_aa8e966300b6224ea944192fa0765fcad}\label{main_8cpp_aa8e966300b6224ea944192fa0765fcad}} 
+\index{main.cpp@{main.cpp}!screenCurrentTime@{screenCurrentTime}}
+\index{screenCurrentTime@{screenCurrentTime}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{screenCurrentTime}{screenCurrentTime}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen_current_time}{Screen\+Current\+Time}} screen\+Current\+Time = \mbox{\hyperlink{class_screen_current_time}{Screen\+Current\+Time}}()}
+
+
+
+Definition at line 29 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_acafaaadddb6e638d36780a7e0ef756bf}\label{main_8cpp_acafaaadddb6e638d36780a7e0ef756bf}} 
+\index{main.cpp@{main.cpp}!screenLight@{screenLight}}
+\index{screenLight@{screenLight}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{screenLight}{screenLight}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen_light}{Screen\+Light}} screen\+Light = \mbox{\hyperlink{class_screen_light}{Screen\+Light}}()}
+
+
+
+Definition at line 31 of file main.\+cpp.
+
+\mbox{\Hypertarget{main_8cpp_a956b474220291fd3bb27a04aafce48bc}\label{main_8cpp_a956b474220291fd3bb27a04aafce48bc}} 
+\index{main.cpp@{main.cpp}!screenTimer@{screenTimer}}
+\index{screenTimer@{screenTimer}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{screenTimer}{screenTimer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen_timer}{Screen\+Timer}} screen\+Timer = \mbox{\hyperlink{class_screen_timer}{Screen\+Timer}}()}
+
+
+
+Definition at line 30 of file main.\+cpp.
+

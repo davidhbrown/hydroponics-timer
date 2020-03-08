@@ -1,0 +1,169 @@
+\hypertarget{class_screen}{}\doxysection{Screen Class Reference}
+\label{class_screen}\index{Screen@{Screen}}
+
+
+{\ttfamily \#include $<$Screen.\+h$>$}
+
+Inheritance diagram for Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_screen}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_screen_ae7576476fc6e6a6eaa66389fdc41fe72}{Screen}} ()
+\item 
+virtual void \mbox{\hyperlink{class_screen_a4118fad87d5825684d546f6770949319}{init\+L\+CD}} (Liquid\+Crystal $\ast$\mbox{\hyperlink{main_8cpp_a276edc7cd16994c3df6ac5a80d8e5cf3}{lcd}})
+\item 
+virtual void \mbox{\hyperlink{class_screen_af0c4751c36f36d7d3767674745e88add}{update\+L\+CD}} (Liquid\+Crystal $\ast$\mbox{\hyperlink{main_8cpp_a276edc7cd16994c3df6ac5a80d8e5cf3}{lcd}})
+\item 
+void \mbox{\hyperlink{class_screen_aed830c0cb69a5e83506ce78e53ee737e}{set\+Next}} (\mbox{\hyperlink{class_screen}{Screen}} $\ast$the\+Next\+Screen)
+\item 
+void \mbox{\hyperlink{class_screen_ae5894e07e54e5dd290244360e284cc30}{set\+Previous}} (\mbox{\hyperlink{class_screen}{Screen}} $\ast$the\+Previous\+Screen)
+\item 
+\mbox{\hyperlink{class_screen}{Screen}} $\ast$ \mbox{\hyperlink{class_screen_af743df653d024c7571e596772009216d}{get\+Next}} ()
+\item 
+\mbox{\hyperlink{class_screen}{Screen}} $\ast$ \mbox{\hyperlink{class_screen_af9b4212ebc4805dd566ad493b00b7b2a}{get\+Previous}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_screen}{Screen}} $\ast$ \mbox{\hyperlink{class_screen_a957eedc9b568dc3f0a315d8660cfeb1d}{get\+Home}} ()
+\item 
+static \mbox{\hyperlink{class_screen}{Screen}} $\ast$ \mbox{\hyperlink{class_screen_a1600b2f4b3fca54ba511e3cddf208d86}{get\+Current}} ()
+\item 
+static void \mbox{\hyperlink{class_screen_a33abae9c73e91a841189e65035b0042e}{set\+Home}} (\mbox{\hyperlink{class_screen}{Screen}} $\ast$the\+Home\+Screen)
+\item 
+static void \mbox{\hyperlink{class_screen_aafb82d8b5990b03e7d772edab446c4d6}{set\+Current}} (\mbox{\hyperlink{class_screen}{Screen}} $\ast$the\+Current)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 4 of file Screen.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_screen_ae7576476fc6e6a6eaa66389fdc41fe72}\label{class_screen_ae7576476fc6e6a6eaa66389fdc41fe72}} 
+\index{Screen@{Screen}!Screen@{Screen}}
+\index{Screen@{Screen}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{Screen()}{Screen()}}
+{\footnotesize\ttfamily Screen\+::\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 4 of file Screen.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_screen_a1600b2f4b3fca54ba511e3cddf208d86}\label{class_screen_a1600b2f4b3fca54ba511e3cddf208d86}} 
+\index{Screen@{Screen}!getCurrent@{getCurrent}}
+\index{getCurrent@{getCurrent}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{getCurrent()}{getCurrent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen}{Screen}} $\ast$ Screen\+::get\+Current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 25 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_a957eedc9b568dc3f0a315d8660cfeb1d}\label{class_screen_a957eedc9b568dc3f0a315d8660cfeb1d}} 
+\index{Screen@{Screen}!getHome@{getHome}}
+\index{getHome@{getHome}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{getHome()}{getHome()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen}{Screen}} $\ast$ Screen\+::get\+Home (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 15 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_af743df653d024c7571e596772009216d}\label{class_screen_af743df653d024c7571e596772009216d}} 
+\index{Screen@{Screen}!getNext@{getNext}}
+\index{getNext@{getNext}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{getNext()}{getNext()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen}{Screen}} $\ast$ Screen\+::get\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 43 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_af9b4212ebc4805dd566ad493b00b7b2a}\label{class_screen_af9b4212ebc4805dd566ad493b00b7b2a}} 
+\index{Screen@{Screen}!getPrevious@{getPrevious}}
+\index{getPrevious@{getPrevious}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{getPrevious()}{getPrevious()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_screen}{Screen}} $\ast$ Screen\+::get\+Previous (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_a4118fad87d5825684d546f6770949319}\label{class_screen_a4118fad87d5825684d546f6770949319}} 
+\index{Screen@{Screen}!initLCD@{initLCD}}
+\index{initLCD@{initLCD}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{initLCD()}{initLCD()}}
+{\footnotesize\ttfamily virtual void Screen\+::init\+L\+CD (\begin{DoxyParamCaption}\item[{Liquid\+Crystal $\ast$}]{lcd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_screen_current_time_a2c788405005ace5fddea2bbbb98052df}{Screen\+Current\+Time}}, \mbox{\hyperlink{class_screen_light_a3582441f1486cbbe158b051d6c54f823}{Screen\+Light}}, and \mbox{\hyperlink{class_screen_timer_a750c8ea170ee6a8083b264a4ba7bea6d}{Screen\+Timer}}.
+
+\mbox{\Hypertarget{class_screen_aafb82d8b5990b03e7d772edab446c4d6}\label{class_screen_aafb82d8b5990b03e7d772edab446c4d6}} 
+\index{Screen@{Screen}!setCurrent@{setCurrent}}
+\index{setCurrent@{setCurrent}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{setCurrent()}{setCurrent()}}
+{\footnotesize\ttfamily void Screen\+::set\+Current (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_screen}{Screen}} $\ast$}]{the\+Current }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 21 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_a33abae9c73e91a841189e65035b0042e}\label{class_screen_a33abae9c73e91a841189e65035b0042e}} 
+\index{Screen@{Screen}!setHome@{setHome}}
+\index{setHome@{setHome}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{setHome()}{setHome()}}
+{\footnotesize\ttfamily void Screen\+::set\+Home (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_screen}{Screen}} $\ast$}]{the\+Home\+Screen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 11 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_aed830c0cb69a5e83506ce78e53ee737e}\label{class_screen_aed830c0cb69a5e83506ce78e53ee737e}} 
+\index{Screen@{Screen}!setNext@{setNext}}
+\index{setNext@{setNext}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{setNext()}{setNext()}}
+{\footnotesize\ttfamily void Screen\+::set\+Next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_screen}{Screen}} $\ast$}]{the\+Next\+Screen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_ae5894e07e54e5dd290244360e284cc30}\label{class_screen_ae5894e07e54e5dd290244360e284cc30}} 
+\index{Screen@{Screen}!setPrevious@{setPrevious}}
+\index{setPrevious@{setPrevious}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{setPrevious()}{setPrevious()}}
+{\footnotesize\ttfamily void Screen\+::set\+Previous (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_screen}{Screen}} $\ast$}]{the\+Previous\+Screen }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file Screen.\+cpp.
+
+\mbox{\Hypertarget{class_screen_af0c4751c36f36d7d3767674745e88add}\label{class_screen_af0c4751c36f36d7d3767674745e88add}} 
+\index{Screen@{Screen}!updateLCD@{updateLCD}}
+\index{updateLCD@{updateLCD}!Screen@{Screen}}
+\doxysubsubsection{\texorpdfstring{updateLCD()}{updateLCD()}}
+{\footnotesize\ttfamily virtual void Screen\+::update\+L\+CD (\begin{DoxyParamCaption}\item[{Liquid\+Crystal $\ast$}]{lcd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_screen_current_time_a5d34e6cb9fd1c9e7892c31525c06dc65}{Screen\+Current\+Time}}, \mbox{\hyperlink{class_screen_light_a8c7a76878a332a983653709e896c617a}{Screen\+Light}}, and \mbox{\hyperlink{class_screen_timer_a67714f1a0da3c6dbcde9b8ab568951a3}{Screen\+Timer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/screen/\mbox{\hyperlink{_screen_8h}{Screen.\+h}}\item 
+src/screen/\mbox{\hyperlink{_screen_8cpp}{Screen.\+cpp}}\end{DoxyCompactItemize}

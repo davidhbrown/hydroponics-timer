@@ -1,15 +1,16 @@
-#include "UIStateIdle.h"
+#include "UIStateSetting.h"
 #include "config.h"
 #include "DLL.h"
 #include "screen/Screen.h"
 
 extern DLL<Screen> *screens;
 
-UIStateIdle::UIStateIdle()
+
+UIStateSetting::UIStateSetting()
 {
     didEnter = false;
 }
-UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
+UIStateId UIStateSetting::handleEvent(UIEventId theEventId)
 {
     UIStateId nextState = UIStateId::IDLE; //that's me!
     if (!didEnter)
