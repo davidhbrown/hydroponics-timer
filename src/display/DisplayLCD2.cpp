@@ -6,11 +6,11 @@ void DisplayLCD2::display(Value *val)
     uint8_t v = (uint8_t)val->get();
     if (v > 99)
     {
-        _lcd->print(F("++"));
+        _lcd->print(F(">>"));
     }
     else if (v < 10)
     {
-        _lcd->print(F(" "));
+        _lcd->print(_pad);
         _lcd->print(v);
     }
     else

@@ -10,10 +10,10 @@ class DisplayLCD : public Display
 {
 protected:
     LiquidCrystal *_lcd;
-    uint8_t _row, _col;
+    uint8_t _col, _row;
 
 public:
-    DisplayLCD(LiquidCrystal *lcd, uint8_t row, uint8_t col);
+    DisplayLCD(LiquidCrystal *lcd, uint8_t col, uint8_t row) : Display(), _lcd{lcd}, _col{col}, _row{row} {};
     void active();
     void inactive();
 };

@@ -18,13 +18,13 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
     switch (theEventId)
     {
     case UIEventId::NONE:
-        // do nothing
         break;
 
     case UIEventId::BUTTON_RELEASE_RIGHT:
     case UIEventId::BUTTON_HELD_RIGHT:
     {
         screens_list.iter_next();
+        screens_list.get_item()->init();
         _stateStartedMS = millis();
     }
     break;
@@ -32,6 +32,7 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
     case UIEventId::BUTTON_HELD_LEFT:
     {
         screens_list.iter_previous();
+        screens_list.get_item()->init();
         _stateStartedMS = millis();
     }
     break;
@@ -56,5 +57,9 @@ UIStateId UIStateIdle::handleEvent(UIEventId theEventId)
         // exit:
         _didEnter = false;
     }
+
+    //Serial.print('u');
+    screens_list.get_item()->update();
+
     return nextState;
 }

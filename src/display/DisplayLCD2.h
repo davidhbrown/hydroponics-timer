@@ -7,7 +7,10 @@
  */
 class DisplayLCD2 : public DisplayLCD
 {
+private:
+    char _pad;
+
 public:
-    DisplayLCD2(LiquidCrystal *lcd, uint8_t row, uint8_t col) : DisplayLCD{lcd, row, col}{};
+    DisplayLCD2(LiquidCrystal *lcd=nullptr, uint8_t col=16, uint8_t row=2, char pad = ' ') : DisplayLCD{lcd, col, row}, _pad{pad} {};
     void display(Value *value);
 };

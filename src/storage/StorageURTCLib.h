@@ -7,8 +7,9 @@
 /*
  * Currently handles only hours, minutes, seconds
  */
-enum StorageURTCLibFields
+enum class StorageURTCLibFields
 {
+    INVALID,
     SECONDS,
     MINUTES,
     HOURS
@@ -21,8 +22,8 @@ private:
     uRTCLib *_rtc;
 public:
     StorageURTCLib(
-        StorageURTCLibFields whichField,
-        uRTCLib *rtc);
+        StorageURTCLibFields whichField=StorageURTCLibFields::INVALID,
+        uRTCLib *rtc=nullptr) : Storage{}, _field{whichField}, _rtc{rtc}{};
     void save(Value *value);
     void load(Value *value);
 };

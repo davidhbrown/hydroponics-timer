@@ -1,12 +1,5 @@
 #include "Value.h"
 
-Value::Value(uint16_t min, uint16_t max, bool wrap) {
-    _min = min;
-    _max = max;
-    _wrap = wrap;
-    _value = min;
-};
-
 uint16_t Value::get() {
     return _value;
 }

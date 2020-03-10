@@ -1,5 +1,4 @@
-#ifndef UISTATEID_H
-#define UISTATEID_H
+#pragma once
 #define UISTATEID_COUNT 3
 
 enum class UIStateId {
@@ -8,4 +7,3 @@ enum class UIStateId {
     SETTING
 };
 
-#endif // UISTATEID_H

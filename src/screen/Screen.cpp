@@ -1,6 +1,5 @@
 #include "Screen.h"
 
-Screen::Screen(List<Setting> *settings) : _settings{settings}{};
 Setting *Screen::getCurrentSetting(){
     if(nullptr == _settings) return nullptr;
     return _settings->get_item();
@@ -18,8 +17,10 @@ void Screen::gotoNextSetting(){
 void Screen::gotoPreviousSetting(){
     _settings->iter_previous();
 };
+/*
 void Screen::update()
 {
+    Serial.print('^');
     if (nullptr == _settings) return;
     _settings->rewind();
     while(true) {
@@ -33,3 +34,4 @@ void Screen::update()
         _settings->iter_next();
     }
 }
+    */

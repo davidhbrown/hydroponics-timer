@@ -1,5 +1,9 @@
 #include "config.h"
 #include "UIStateSleep.h"
+#include "List.h"
+#include "screen/Screen.h"
+
+extern List<Screen> screens_list;
 
 UIStateId UIStateSleep::handleEvent(UIEventId theEventId)
 {
@@ -13,7 +17,7 @@ UIStateId UIStateSleep::handleEvent(UIEventId theEventId)
     switch (theEventId)
     {
     case UIEventId::NONE:
-        /* code */
+        screens_list.get_item()->update();
         break;
 
     default:

@@ -16,7 +16,7 @@ protected:
     List<Setting> *_settings;
 
 public:
-    Screen(List<Setting> *settings);
+    Screen(List<Setting> *settings) : _settings{settings}{};
     Setting * getCurrentSetting();
     void gotoFirstSetting();
     /**
@@ -38,5 +38,5 @@ public:
      * @brief Update the screen to display current information / setting
      * 
      */
-    void update();
+    virtual void update();
 };

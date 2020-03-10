@@ -13,7 +13,7 @@ LiquidCrystal lcd(PIN_RS, PIN_EN, PIN_D4, PIN_D5, PIN_D6, PIN_D7);
 uRTCLib rtc = uRTCLib();
 
 #include "ui/UIStateId.h"
-UIStateId currentStateId;
+UIStateId currentUIStateId;
 
 #include "ui/UIStateRepository.h"
 #include "ui/UIStateIdle.h"
@@ -33,11 +33,9 @@ int eventsIndex = 0;
 #include "screen/ScreenCurrentTime.h"
 #include "screen/ScreenTimer.h"
 #include "screen/ScreenLight.h"
-ScreenCurrentTime screen_currentTime = ScreenCurrentTime(&lcd, &rtc);
-ScreenTimer screen_timer = ScreenTimer(&lcd);
-ScreenLight screen_light = ScreenLight(&lcd);
+#include "screen/ScreenMillis.h"
+
 List<Screen> screens_list = List<Screen>();
-Screen *previousScreen;
 
 void setup()
 {
@@ -63,31 +61,25 @@ void setup()
   UIStateRepository::registerState(&uis_setting);
   UIStateRepository::registerState(&uis_idle);
   UIStateRepository::registerState(&uis_sleep);
-  currentStateId = UIStateId::IDLE;
+  currentUIStateId = UIStateId::IDLE;
   Serial.println("UI setup complete");
   delay(100);
 
   Serial.println("Registering Screens");
 
-  screens_list.insert(&screen_light);
-  screens_list.insert(&screen_timer);
-  screens_list.insert(&screen_currentTime);
-  previousScreen = nullptr;
+  screens_list.insert(new ScreenLight(&lcd));
+  screens_list.insert(new ScreenTimer(&lcd));
+  screens_list.insert(new ScreenCurrentTime(&lcd, &rtc));
+  screens_list.insert(new ScreenMillis(&lcd));
   Serial.println(F("Setup complete"));
+  screens_list.get_item()->init();
+  screens_list.get_item()->update();
 }
 
 void loop()
 {
   // initialize current event
-  UIEventId currentEventId = lcdButtons.getEvent();
+  UIEventId currentUIEventId = lcdButtons.getEvent();
 
-  UIState *state = UIStateRepository::getState(currentStateId);
-  currentStateId = state->handleEvent(currentEventId);
-
-  if (previousScreen != screens_list.get_item())
-  {
-    previousScreen = screens_list.get_item();
-    screens_list.get_item()->init();
-  }
-  screens_list.get_item()->update();
+  currentUIStateId = UIStateRepository::getState(currentUIStateId)->handleEvent(currentUIEventId);
 }

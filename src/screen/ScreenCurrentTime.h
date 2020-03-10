@@ -10,14 +10,14 @@
 
 class ScreenCurrentTime : public ScreenLCD {
     private:
-    Setting *_hours, *_minutes, *_seconds;
-    DisplayLCD2 *_hours_d, *_minutes_d, *_seconds_d;
-    StorageURTCLib *_hours_ss, *_minutes_ss, *_seconds_ss;
-    Value *_hours_v, *_minutes_v, *_seconds_v;
+    StorageURTCLib _hs, _ms, _ss;
+    Value _hv, _mv, _sv;
+    DisplayLCD2 _hd, _md, _sd;
+    Setting _hset, _mset, _sset;
     protected:
     List<Setting> *_settings;
     public:
-    ScreenCurrentTime(LiquidCrystal *lcd, uRTCLib *rtc);
+    ScreenCurrentTime(LiquidCrystal *lcd, uRTCLib *rtc) ;
     void init();
     void update();
 };
